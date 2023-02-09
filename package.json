@@ -1,0 +1,27 @@
+{
+  "name": "esm-datasource-be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chirangaw186/esm-datasource-be.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chirangaw186/esm-datasource-be/issues"
+  },
+  "homepage": "https://github.com/chirangaw186/esm-datasource-be#readme",
+  "dependencies": {
+    "@prisma/client": "^4.10.0",
+    "dotenv": "^16.0.3",
+    "express-graphql": "^0.12.0",
+    "graphql": "^16.6.0",
+    "pg-promise": "^11.2.0",
+    "prisma": "^4.10.0"
+  }
+}

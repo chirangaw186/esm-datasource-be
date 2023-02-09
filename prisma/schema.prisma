@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model DataSources {
+  DSID                            Int      @id @default(autoincrement())
+  EXT_REF                         String?  @db.VarChar(10)
+  ContentType                     String?  @db.VarChar(5)
+  Name                            String?  @db.VarChar(50)
+  Region                          Int
+  Country                         String?  @db.VarChar(3)
+  City                            String?  @db.VarChar(20)
+  Address                         String?  @db.VarChar(100)
+  Currency                        String?  @db.VarChar(3)
+  IsDirectProvider                Boolean  @default(false)
+  DSAttributes                    DSAttributes[]
+}
+
+model DSAttributes {
+  DSID                            Int         @id
+  Key                             String?     @db.VarChar(10)
+  Value                           String?     @db.VarChar(5)
+  DataSources                     DataSources @relation(fields: [DSID], references: [DSID])
+  DSAttribKeys                    DSAttribKeys?
+}
+
+model DSAttribKeys {
+  DSType                          String?  @db.VarChar(7)
+  DSID                            Int @unique
+  Key                             String @db.VarChar(20)
+  DataType                        String?  @db.VarChar(10)
+  Length                          Int
+  DSAttributes                    DSAttributes @relation(fields: [DSID], references: [DSID])
+}
+
